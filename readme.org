@@ -6,16 +6,23 @@
 
 A simple clojurescript project template.
 
-# Start the application in repl
+** Start the application in repl
 
-** Linux and MacOS
+*** Linux and MacOS
 
-#+BEGIN_SRC sh
-clojure -M --main cljs.main --compile clojurescript-template.core --repl
-#+END_SRC
+ #+BEGIN_SRC sh
+ clojure -M --main cljs.main --compile clojurescript-template.core --repl
+ #+END_SRC
 
 ** Windows
    
 #+BEGIN_SRC sh
 java -cp "cljs.jar;src" cljs.main --compile clojurescript-template.core --repl
 #+END_SRC
+
+
+**  Running the tests
+
+ #+BEGIN_SRC sh
+ clojure -Mtest
+ #+END_SRC

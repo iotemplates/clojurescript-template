@@ -28,12 +28,11 @@ on:
 
 jobs:
   build:
-    name: Clojure on JDK ${{ matrix.java-version }} with Leiningen ${{ matrix.lein-version }}
+    name: Clojurescript on JDK ${{ matrix.java-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         java-version: [11.0.2-open]
-        lein-version: [2.9.7]
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
@@ -47,9 +46,9 @@ jobs:
         run: |
           sdk install java ${{matrix.java-version}}
           sdk default java ${{matrix.java-version}}
-      - name: Setup leiningen
-        run: |
-          sdk install leiningen ${{matrix.lein-version}}
-          sdk default leiningen ${{matrix.lein-version}}
+      - name: Setup clojure 
+        uses: DeLaGuardo/setup-clojure@3.1
+        with:
+          tools-deps: '1.10.1.763'
       - name: Run tests
-        run: lein test
+        run: clojure -Mtest
